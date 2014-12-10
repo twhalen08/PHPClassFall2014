@@ -31,12 +31,14 @@ elseif(empty($pass))
 //if there are no errors...
 if (empty($err))
 {
+    //hash the passowrd
+    $hashedPass = sha1($pass);
     
     //build the parameterized query.
     $query = $db->prepare('insert into signup set email=:email, password=:password');
     //then bind the parameters. 
     $query->bindParam(':email', $email, PDO::PARAM_INT);
-    $query->bindParam(':password', $pass, PDO::PARAM_INT);
+    $query->bindParam(':password', $hashedPass, PDO::PARAM_INT);
     //if the query executes and there is a row count,
     if($query->execute() && $query->rowCount() > 0)
     {
