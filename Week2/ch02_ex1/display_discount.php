@@ -8,40 +8,41 @@
 <body>
 
         <?php
+        
         $product_description = $_POST['product_description'];
         $list_price = $_POST['list_price'];
-        $list_price_f = '$'.number_format($list_price, 2);
         $discount_percent = $_POST['discount_percent'] / 100;
-        $discount_percent_formatted = $_POST['discount_percent'].'%';
-        $discount = $list_price * $discount_percent;
-        $discount_f = '$'.number_format($discount, 2);
-        $discount_price = $list_price - $discount;
-        $discount_price_f = '$'.number_format($discount_price, 2);
-        
+
         if (empty($product_description))
         {
             echo "Product Description is empty and is a required field";
             include 'index.php';
             exit();
         }
-        if (!is_string($product_description))
+        else if (!is_string($_POST['product_description']))
         {
             echo "Product Description needs to be a string of alpha characters";
             include 'index.php';
             exit();
         }
-        if (!is_numeric($list_price))
+        else if (!is_numeric($list_price))
         {
            echo "List Price needs to be numeric";
             include 'index.php';
             exit();
         }
-               if (!is_numeric($discount_percent))
+        else if (!is_numeric($discount_percent))
         {
            echo "Discount Percent needs to be numeric";
             include 'index.php';
             exit();
         }
+        $list_price_f = '$'.number_format($list_price, 2);
+        $discount_percent_formatted = $_POST['discount_percent'].'%';
+        $discount = $list_price * $discount_percent;
+        $discount_f = '$'.number_format($discount, 2);
+        $discount_price = $list_price - $discount;
+        $discount_price_f = '$'.number_format($discount_price, 2);
         
         ?>
     <div id="content">
