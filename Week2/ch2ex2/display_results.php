@@ -15,8 +15,6 @@ $error_message = "";
     <?php
     if ($investment === $investment_rand || $interest_rate === $interest_rand || $years_rand === $years)
     {
-        echo $years_rand;
-        echo $years;
         $error_message .= '<p class="error">The default values cannot be used for a calculation. Please use your own values!</p>';
     
     }
