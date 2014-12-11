@@ -1,6 +1,7 @@
 <?php
 require 'database.php';
 require 'validationFunctions.php';
+session_start();
 //create an error var
 $err = array('');
 //take in filtered post values from the signup form. 
@@ -20,9 +21,10 @@ if(validateLogin($email, $pass)== false)
    array_push($err, '<p>Login Failed! Username or Password invalid!</p>');
 }
 //if there are no errors...
-if (sizeof($err) == 1)
+if (count($err) < 2)
 {
- echo "login Successful!";
+$_SESSION['isLoggedIn']=true;
+header('location:admin.php');
 }
 //if there ARE errors...
 else
@@ -34,6 +36,6 @@ else
     }
     unset($value);
     //include form
-    include 'login.html';
+    include 'login-form.php';
 }
 
