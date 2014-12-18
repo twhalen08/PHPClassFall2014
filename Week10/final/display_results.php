@@ -94,7 +94,7 @@ if($errorMsg == '')
             <span>'. htmlspecialchars($contact_via) .'</span><br /><br />
 
             <span>Comments:</span><br />
-            <span>'. nl2br($comments, false) .'</span><br /><br><br><br><a href="table.php">GO TO ACCOUNT LOST</a>
+            <span>'. nl2br(htmlspecialchars($comments), false) .'</span><br /><br><br><br><a href="table.php">GO TO ACCOUNT LOST</a>
 
         </div>
     </body>
